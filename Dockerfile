@@ -3,16 +3,6 @@ FROM gcr.io/tensorflow/tensorflow:1.5.0-devel
 RUN apt-get update
 RUN apt-get install -y wget git
 
-RUN git clone https://github.com/sofwerx/android_tensorflow_object_detection.git /android_tensorflow_object_detection
-
-WORKDIR /android_tensorflow_object_detection
-# cd /android_tensorflow_object_detection
-
-RUN cp /android_tensorflow_object_detection/DetectorActivity.java /tensorflow/tensorflow/examples/android/src/org/tensorflow/demo/DetectorActivity.java \
- && cp /android_tensorflow_object_detection/INCMODEL.pb /tensorflow/tensorflow/examples/android/assets/INCMODEL.pb \
- && cp /android_tensorflow_object_detection/object-detection.pbtxt /tensorflow/tensorflow/examples/android/assets/object-detection.pbtxt \
- && cp /android_tensorflow_object_detection/WORKSPACE /tensorflow/WORKSPACE
-
 RUN mkdir -p /android
 
 WORKDIR /android
@@ -54,17 +44,13 @@ RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
 
 ENV LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
-RUN apt-get install -y python3
-
 WORKDIR /tensorflow
 # cd /tensorflow
 
-#ENV LANG=C LC_ALL=C
-#RUN echo "import sys; reload(sys); sys.setdefaultencoding('utf-8');" > /tensorflow/sitecustomize.py
-#ENV PYTHONPATH="/tensorflow:$PYTHONPATH"
-
-RUN python3 -c 'import sys; print(sys.getdefaultencoding())'
-RUN python -c 'import sys; print(sys.getdefaultencoding())'
+COPY DetectorActivity.java /tensorflow/tensorflow/examples/android/src/org/tensorflow/demo/DetectorActivity.java
+COPY INCMODEL.pb /tensorflow/tensorflow/examples/android/assets/INCMODEL.pb
+COPY object-detection.pbtxt /tensorflow/tensorflow/examples/android/assets/object-detection.pbtxt
+COPY WORKSPACE /tensorflow/WORKSPACE
 
 RUN bazel build -c opt --local_resources 4096,4.0,1.0 -j 1 //tensorflow/examples/android:tensorflow_demo
 
