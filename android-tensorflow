@@ -1,0 +1,47 @@
+
+
+
+docker run --rm -it gcr.io/tensorflow/tensorflow:1.5.0-devel
+
+
+apt-get update
+apt-get install wget
+apt-get install git
+
+cd /
+git clone https://github.com/sofwerx/android_tensorflow_object_detection.git
+
+
+cp /android_tensorflow_object_detection/DetectorActivity.java /tensorflow/tensorflow/examples/android/src/org/tensorflow/demo/DetectorActivity.java
+cp /android_tensorflow_object_detection/INCMODEL.pb /tensorflow/tensorflow/examples/android/assets/INCMODEL.pb
+cp /android_tensorflow_object_detection/object-detection.pbtxt /tensorflow/tensorflow/examples/android/assets/object-detection.pbtxt
+cp /android_tensorflow_object_detection/WORKSPACE /tensorflow/WORKSPACE
+
+
+
+mkdir /android
+cd /android
+wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
+unzip tools_r25.2.3-linux.zip
+rm tools_r25.2.3-linux.zip
+wget https://dl.google.com/android/repository/android-ndk-r14b-linux-x86_64.zip
+unzip android-ndk-r14b-linux-x86_64.zip
+rm android-ndk-r14b-linux-x86_64.zip
+
+tools/bin/sdkmanager "platforms;android-23"
+touch ~/.android/repositories.cfg
+tools/bin/sdkmanager "build-tools;26.0.2"
+
+
+cd /tensorflow
+
+bazel build -c opt --local_resources 4096,4.0,1.0 -j 1 //tensorflow/examples/android:tensorflow_demo
+
+
+docker cp 1b0413dc111b:/tensorflow/bazel-bin/tensorflow/examples/android/tensorflow_demo.apk /home/david/Desktop/tf.apk
+
+
+
+
+
+
