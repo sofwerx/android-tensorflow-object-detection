@@ -1,0 +1,30 @@
+sudo: required
+services:
+- docker
+language: bash
+script:
+#- docker pull sofwerx/android_tensorflow_object_detection:latest
+#- docker build --cache-from sofwerx/android_tensorflow_object_detection:latest --build-arg TRAVIS_TAG=${TRAVIS_TAG} -t sofwerx/android_tensorflow_object_detection:latest .
+- docker build --build-arg TRAVIS_TAG=${TRAVIS_TAG} -t sofwerx/android_tensorflow_object_detection:latest .
+- docker-compose up
+after_success:
+- mv outputs/tf.apk android_tensorflow_object_detection-${TRAVIS_TAG}.apk
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker push sofwerx/android_tensorflow_object_detection
+branches:
+  only:
+  - master
+  - "/^v\\d.*$/"
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: "${GITHUB_TOKEN}"
+  file:
+  - android_tensorflow_object_detection-${TRAVIS_TAG}.apk
+  on:
+    tags: true
+    repo: "${TRAVIS_REPO_SLUG}"
+notifications:
+  slack:
+    rooms:
+      secure:
