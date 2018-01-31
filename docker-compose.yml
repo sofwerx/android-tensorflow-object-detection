@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+
+  tensorflow:
+    container_name: tensorflow
+    image: sofwerx/android_tensorflow_object_detection
+    build:
+      context: .
+      dockerfile: Dockerfile
+#      cache_from: sofwerx/android_tensorflow_object_detection:latest
+      args:
+        - TRAVIS_TAG=${TRAVIS_TAG}
+    volumes:
+      - "./outputs:/outputs"
+
