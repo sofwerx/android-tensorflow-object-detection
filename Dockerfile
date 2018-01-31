@@ -68,7 +68,7 @@ RUN python -c 'import sys; print(sys.getdefaultencoding())'
 
 RUN bazel build -c opt --local_resources 4096,4.0,1.0 -j 1 //tensorflow/examples/android:tensorflow_demo
 
-VOLUME /output
+VOLUME /outputs
 
-CMD cp /tensorflow/bazel-bin/tensorflow/examples/android/tensorflow_demo.apk /output/tf.apk
+CMD cp /tensorflow/bazel-bin/tensorflow/examples/android/tensorflow_demo.apk /outputs/tf.apk
 
