@@ -47,6 +47,8 @@ ENV LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 WORKDIR /tensorflow
 # cd /tensorflow
 
+RUN bazel fetch //tensorflow/examples/android:tensorflow_demo
+
 COPY DetectorActivity.java /tensorflow/tensorflow/examples/android/src/org/tensorflow/demo/DetectorActivity.java
 COPY INCMODEL.pb /tensorflow/tensorflow/examples/android/assets/INCMODEL.pb
 COPY object-detection.pbtxt /tensorflow/tensorflow/examples/android/assets/object-detection.pbtxt
