@@ -2,7 +2,7 @@
 
 ### Description
 
-This Repostiory was created so people can put their own trained object detection tensorflow models on an android mobile device. The provided model file and text file was trained to identify AK47's. The object detection app was designed by Google.
+This Repostiory was created so people can put their own trained object detection tensorflow models in an android mobile device. The provided model file and text file was trained to identify AK47's. The object detection app was designed by Google.
 
 ### App
 The App used for object detection is Tensorflows mobile app called TF Classify. The default model that came with this app is Mobilenet 
@@ -59,6 +59,13 @@ Run docker container and find andorid apk at home directory
 ```
 docker run --rm -it -v /$HOME/Desktop:/outputs android/tensorflow
 ```
+
+Install apk on android 7.0 device or higher. Please ensure you have developer options on. Please google "how to install apk on android if you dont know what I am talking about".
+
+```
+adb install $HOME/Desktop/tf.apk
+```
+
 
 
 
