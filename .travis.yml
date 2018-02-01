@@ -6,27 +6,26 @@ script:
 - echo "TRAVIS_TAG=${TRAVIS_TAG}"
 - docker pull sofwerx/android_tensorflow_object_detection:base
 - docker build --cache-from sofwerx/android_tensorflow_object_detection:base -t sofwerx/android_tensorflow_object_detection:base -f Dockerfile.base .
-#- docker pull sofwerx/android_tensorflow_object_detection:latest
-#- docker build --cache-from sofwerx/android_tensorflow_object_detection:latest -t sofwerx/android_tensorflow_object_detection:latest .
-#- docker-compose up
+- docker build --cache-from sofwerx/android_tensorflow_object_detection:base -t sofwerx/android_tensorflow_object_detection:latest .
+- docker-compose up
 after_success:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - docker push sofwerx/android_tensorflow_object_detection:base
-#- mv outputs/tf.apk android_tensorflow_object_detection-${TRAVIS_TAG}.apk
-#- docker push sofwerx/android_tensorflow_object_detection:${TRAVIS_TAG}
+- mv outputs/tf.apk android_tensorflow_object_detection-${TRAVIS_TAG}.apk
+- docker push sofwerx/android_tensorflow_object_detection:${TRAVIS_TAG}
 branches:
   only:
   - master
   - "/^v\\d.*$/"
-#deploy:
-#  provider: releases
-#  skip_cleanup: true
-#  api_key: "${GITHUB_TOKEN}"
-#  file:
-#  - android_tensorflow_object_detection-${TRAVIS_TAG}.apk
-#  on:
-#    tags: true
-#    repo: "${TRAVIS_REPO_SLUG}"
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: "${GITHUB_TOKEN}"
+  file:
+  - android_tensorflow_object_detection-${TRAVIS_TAG}.apk
+  on:
+    tags: true
+    repo: "${TRAVIS_REPO_SLUG}"
 notifications:
   slack:
     rooms:
