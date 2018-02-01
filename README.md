@@ -22,7 +22,7 @@ The TensorFlow Inception V2 Model was selected. The model was trained using Tens
 * docker-compose installed
 * adb installed
 * git installed
-* have android 7.0 or higher on device 
+* android 7.0 or higher on device 
 
 ### Steps
 
@@ -60,7 +60,7 @@ Run docker container and find andorid apk at home directory
 docker run --rm -it -v /$HOME/Desktop:/outputs android/tensorflow
 ```
 
-Install apk on android 7.0 device or higher. Please ensure you have developer options on. Please google or youtube "how to install apk on android if you dont know what I am talking about".
+Install apk on android 7.0 device or higher. Please ensure you have developer options on. Please google or youtube "how to install apk on android" if you dont know what I am talking about.
 
 ```
 adb install $HOME/Desktop/tf.apk
