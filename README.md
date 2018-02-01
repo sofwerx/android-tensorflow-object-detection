@@ -28,31 +28,37 @@ The TensorFlow Inception V2 Model was selected. The model was trained using Tens
 ### Steps
 
 
-
+Download project to Desktop
 
 ```
 cd $HOME/Desktop
 ```
+
+Download project repository
 
 ```
 git clone https://github.com/sofwerx/android_tensorflow_object_detection.git
 
 ```
 
-Replace the files INCMODEL.pb and object-detection.pbtxt files if you are using your own model.
+go to project directory
+Note : Replace the files INCMODEL.pb and object-detection.pbtxt files if you are using your own model.
 
 ```
 cd android_tensorflow_object_detection
 ```
 
+Build docker image to run docker container
+
 ```
 docker build -t android/tensorflow .
 ```
 
+Run docker container and find andorid apk at home directory
+
 ```
 docker run --rm -it -v /$HOME/Desktop:/outputs android/tensorflow
 ```
-
 
 
 
