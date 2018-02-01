@@ -3,9 +3,8 @@ services:
 - docker
 language: bash
 script:
-#- docker pull sofwerx/android_tensorflow_object_detection:latest
-#- docker build --cache-from sofwerx/android_tensorflow_object_detection:latest --build-arg TRAVIS_TAG=${TRAVIS_TAG} -t sofwerx/android_tensorflow_object_detection:latest .
-- docker build --build-arg TRAVIS_TAG=${TRAVIS_TAG} -t sofwerx/android_tensorflow_object_detection:latest .
+- docker pull sofwerx/android_tensorflow_object_detection:latest
+- docker build --cache-from sofwerx/android_tensorflow_object_detection:latest --build-arg TRAVIS_TAG=${TRAVIS_TAG} -t sofwerx/android_tensorflow_object_detection:latest .
 - docker-compose up
 after_success:
 - mv outputs/tf.apk android_tensorflow_object_detection-${TRAVIS_TAG}.apk
