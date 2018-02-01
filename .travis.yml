@@ -1,19 +1,23 @@
 sudo: required
 services:
 - docker
+cache:
+  directories:
+    - /root/.cache
 language: bash
 script:
 - echo "TRAVIS_TAG=${TRAVIS_TAG}"
 #- docker pull sofwerx/android_tensorflow_object_detection:base || true
 #- docker build --cache-from sofwerx/android_tensorflow_object_detection:base -t sofwerx/android_tensorflow_object_detection:base -f Dockerfile.base .
 #- docker build --cache-from sofwerx/android_tensorflow_object_detection:base -t sofwerx/android_tensorflow_object_detection:latest .
-- docker build -t sofwerx/android_tensorflow_object_detection:latest .
+#- docker build -t sofwerx/android_tensorflow_object_detection:latest .
+- docker build -t sofwerx/android_tensorflow_object_detection:base -f Dockerfile.base .
 - docker-compose up
 after_success:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-#- docker push sofwerx/android_tensorflow_object_detection:base || true
-- mv outputs/tf.apk android_tensorflow_object_detection-${TRAVIS_TAG:-latest}.apk
-- docker push sofwerx/android_tensorflow_object_detection:${TRAVIS_TAG:-latest}
+- docker push sofwerx/android_tensorflow_object_detection:base || true
+#- mv outputs/tf.apk android_tensorflow_object_detection-${TRAVIS_TAG:-latest}.apk
+#- docker push sofwerx/android_tensorflow_object_detection:${TRAVIS_TAG:-latest}
 branches:
   only:
   - master
