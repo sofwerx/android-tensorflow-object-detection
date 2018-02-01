@@ -40,7 +40,7 @@ git clone https://github.com/sofwerx/android_tensorflow_object_detection.git
 
 ```
 
-go to project directory
+Go to project directory
 
 Note : Replace the files INCMODEL.pb and object-detection.pbtxt files if you are using your own model.
 
