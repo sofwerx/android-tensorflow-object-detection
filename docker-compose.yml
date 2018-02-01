@@ -7,10 +7,8 @@ services:
     image: sofwerx/android_tensorflow_object_detection
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.base
 #      cache_from: sofwerx/android_tensorflow_object_detection:latest
-      args:
-        - TRAVIS_TAG=${TRAVIS_TAG}
     volumes:
       - "./outputs:/outputs"
 
