@@ -2,7 +2,7 @@
 
 ### Description
 
-This Repostiory was created so people can put their own trained object detection tensorflow models on an android tensorflow mobile app. The provided model file and text file was trained to identify AK47's. The object detection app was created by Google.
+This Repostiory was created so people can put their own trained object detection tensorflow models on an android mobile device. The provided model file and text file was trained to identify AK47's. The object detection app was created by Google.
 
 ### App
 The App used for object detection is Tensorflows mobile app called TF Classify. The default model that came with this app is Mobilenet 
@@ -12,7 +12,7 @@ Training of a model can be done using Tensorlfow Obejct Detection API. The docum
 
 
 ### Model
-The TensorFlow Inception V2 Model was selected. The model was trained using Tensorflow's Object Detection API If this app is implemented on an older phone or tablet, its operation will be slow. Object dection for this app can be faster if the model is quanitzed.
+The TensorFlow Inception V2 Model was selected. The model was trained using Tensorflow's Object Detection API. If this app is implemented on an older phone or tablet, its operation will be slow. Object dection for this app can be faster if the model is quanitzed. Mobilenet and Inception worked ok but there were issues using Faster_CNN
  
 
 
