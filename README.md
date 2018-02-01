@@ -60,7 +60,7 @@ Run docker container and find andorid apk at home directory
 docker run --rm -it -v /$HOME/Desktop:/outputs android/tensorflow
 ```
 
-Install apk on android 7.0 device or higher. Please ensure you have developer options on. Please google "how to install apk on android if you dont know what I am talking about".
+Install apk on android 7.0 device or higher. Please ensure you have developer options on. Please google or youtube "how to install apk on android if you dont know what I am talking about".
 
 ```
 adb install $HOME/Desktop/tf.apk
