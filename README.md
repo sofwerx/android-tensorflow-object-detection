@@ -1,14 +1,13 @@
-# Android Tensorflow Object Detection 
+# Android TensorFlow Object Detection 
 
 ### Description
-
-This repository was created so people can put their own trained object detection tensorflow models in an android mobile device. The provided model file and text file was trained to identify AK47's. The object detection app was designed by Google.
+This repository was created for people to place their own trained object detection TensorFlow models into an Android mobile device. The provided model and text files were trained to identify AK47’s. The object detection app was designed by Google. 
 
 ### App
-The App used for object detection is Tensorflows mobile app called TF Classify. The default model that came with this app is Mobilenet 
+The app utilized for object detection was TensorFlow’s mobile app named ‘TF Classify’. The default model that came with this app is Mobilenet. 
 
 ### Training
-Training of a model can be done using Tensorlfow Object Detection API. The documentaion and turtorials to train models can be found in the following link. [Introduction and Use - Tensorflow Object Detection API Tutorial](https://pythonprogramming.net/introduction-use-tensorflow-object-detection-api-tutorial/) .
+Training of a model can be accomplished utilizing TensorFlow’s Object Detection API. The documentation and tutorials to train models can be found in the following link: [Introduction and Use - Tensorflow Object Detection API Tutorial](https://pythonprogramming.net/introduction-use-tensorflow-object-detection-api-tutorial/) .
 
 
 ### Model
