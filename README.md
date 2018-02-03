@@ -11,7 +11,7 @@ Training of a model can be accomplished utilizing TensorFlow’s Object Detectio
 
 
 ### Model
-The TensorFlow Inception V2 Model was selected. The model was trained using Tensorflow's Object Detection API. If this app is implemented on an older phone or tablet, its operation will be slow. Object dection for this app can be faster if the model is quanitzed. Mobilenet and Inception worked ok but there were issues using Faster_CNN
+The TensorFlow Inception V2 Model was selected. The model was trained using TensorFlow's Object Detection API. If this app is implemented on an older phone or tablet, its operation will be slow. Object detection through this app can be faster if the model is quantized. Mobilenet and Inception performed decently, however issues arose when using Faster_CNN. 
  
 
 
@@ -53,13 +53,13 @@ Build docker image to run docker container
 docker build -t android/tensorflow .
 ```
 
-Run docker container and find andorid apk at home directory
+Run docker container and find Android apk at home directory
 
 ```
 docker run --rm -it -v /$HOME/Desktop:/outputs android/tensorflow
 ```
 
-Install apk on android 7.0 device or higher. Please ensure you have developer options on. Please google or youtube "how to install apk on android" if you dont know what I am talking about.
+Install apk on Android 7.0 device or higher. Please ensure you have developer options on. Please google or youtube "how to install apk on android" if you dont know what I am talking about.
 
 ```
 adb install $HOME/Desktop/tf.apk
